@@ -3,9 +3,9 @@ import pandas as pd
 import joblib
 import streamlit as st
 
-x = pd.read_csv("C:\\Users\\hp\\x_rainfall_prediction.csv")
+x = pd.read_csv("x_rainfall_prediction.csv")
 x.drop(x.columns[0],axis = 1 ,inplace = True)
-df = pd.read_csv("C:\\Users\\hp\\Downloads\\Rainfall.csv")
+df = pd.read_csv("Rainfall.csv")
 df.columns = df.columns.str.strip()
 
 st.write("""
@@ -16,8 +16,8 @@ This app uses daily weather conditions to predict the occurence of Rainfall
 
 st.write("***")
 
-scaler = joblib.load("C:\\Users\\hp\\Downloads\\scaler_rainfall.joblib")
-model = joblib.load("C:\\Users\\hp\\Downloads\\model_rainfall.joblib")
+scaler = joblib.load("scaler_rainfall.joblib")
+model = joblib.load("model_rainfall.joblib")
 
 def rainfall_pred(x,model,scaler,pressure ,dewpoint,humidity,cloud,sunshine,winddirection,windspeed):
     fv = np.zeros(len(x.columns))
